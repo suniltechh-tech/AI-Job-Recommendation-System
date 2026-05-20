@@ -1,0 +1,467 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+
+body{
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* MAIN LAYOUT */
+
+.main-container{
+    display:flex;
+    position:relative;
+}
+
+/* BACKGROUND GLOW */
+
+.main-container::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#7c3aed;
+    filter:blur(180px);
+    opacity:0.3;
+    top:-100px;
+    right:-100px;
+    z-index:-1;
+}
+
+.main-container::after{
+    content:"";
+    position:fixed;
+    width:400px;
+    height:400px;
+    background:#2563eb;
+    filter:blur(180px);
+    opacity:0.3;
+    bottom:-100px;
+    left:-100px;
+    z-index:-1;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+    width:250px;
+    height:100vh;
+
+    background:rgba(255,255,255,0.04);
+
+    backdrop-filter:blur(20px);
+
+    border-right:1px solid rgba(255,255,255,0.08);
+
+    padding:30px 20px;
+
+    position:fixed;
+
+    box-shadow:0 0 40px rgba(0,0,0,0.3);
+}
+
+/* LOGO */
+
+.logo{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:40px;
+}
+
+/* NAVIGATION */
+
+.nav-links{
+    display:flex;
+    flex-direction:column;
+    gap:30px;
+    margin-top:40px;
+}
+/* NAV BUTTONS */
+
+.nav-btn{
+    display:flex;
+    align-items:center;
+    gap:14px;
+
+    padding:16px 20px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-size:20px;
+    font-weight:600;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    transition:all 0.35s ease;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+/* SHINE EFFECT */
+
+.nav-btn::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:-100%;
+    width:100%;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+
+    transition:0.6s;
+}
+
+.nav-btn:hover::before{
+    left:100%;
+}
+
+/* HOVER */
+
+.nav-btn:hover{
+
+    transform:translateX(8px) scale(1.03);
+
+    background:linear-gradient(
+        135deg,
+        #7b2ff7,
+        #4e54ff
+    );
+
+    box-shadow:
+        0 0 15px rgba(123,47,247,0.6),
+        0 0 35px rgba(78,84,255,0.5);
+
+    color:white;
+}
+
+/* ACTIVE */
+
+.nav-btn.active{
+
+    background:linear-gradient(
+        135deg,
+        #7b2ff7,
+        #4e54ff
+    );
+
+    box-shadow:
+        0 0 20px rgba(123,47,247,0.7),
+        0 0 40px rgba(78,84,255,0.6);
+
+    color:white;
+}
+
+/* CONTENT */
+
+.content{
+    margin-left:270px;
+    width:100%;
+    padding:50px;
+}
+
+/* HERO */
+
+.hero{
+    margin-bottom:50px;
+}
+
+.hero h1{
+    font-size:70px;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero span{
+    color:#a855f7;
+}
+
+.hero p{
+    font-size:22px;
+    color:#d1d1d1;
+}
+
+/* GLASS BOX */
+
+.glass-box{
+    background:rgba(255,255,255,0.08);
+
+    backdrop-filter:blur(15px);
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    border-radius:25px;
+
+    padding:40px;
+
+    box-shadow:0 8px 32px rgba(0,0,0,0.3);
+}
+
+/* INPUT */
+
+input[type="text"],
+input[type="file"]{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:15px;
+
+    margin-top:15px;
+    margin-bottom:25px;
+
+    font-size:16px;
+
+    background:#111;
+
+    color:white;
+}
+
+/* BUTTON */
+
+button{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:linear-gradient(
+        to right,
+        #7c3aed,
+        #6366f1
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+
+    box-shadow:0 4px 20px rgba(124,58,237,0.4);
+}
+
+button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 30px rgba(124,58,237,0.6);
+}
+
+/* STATS */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin:40px 0;
+}
+
+.stat-box{
+
+    background:rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    padding:25px;
+
+    backdrop-filter:blur(12px);
+}
+
+.stat-box h2{
+    font-size:50px;
+    color:#8b5cf6;
+}
+
+/* JOB GRID */
+
+.jobs-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+/* JOB CARD */
+
+.job-card{
+
+    background:rgba(255,255,255,0.06);
+
+    border-radius:25px;
+
+    padding:30px;
+
+    backdrop-filter:blur(16px);
+
+    transition:0.4s ease;
+
+    border:1px solid rgba(255,255,255,0.1);
+
+    box-shadow:
+    0 8px 32px rgba(0,0,0,0.3),
+    inset 0 0 1px rgba(255,255,255,0.2);
+}
+
+.job-card:hover{
+
+    transform:translateY(-10px) scale(1.02);
+
+    box-shadow:
+    0 12px 40px rgba(124,58,237,0.4),
+    0 0 20px rgba(99,102,241,0.4);
+}
+
+/* MATCH */
+
+.match{
+    color:#22c55e;
+    font-size:22px;
+    font-weight:bold;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    display:inline-block;
+    margin-top:40px;
+    padding:15px 30px;
+    background:#8b5cf6;
+    color:white;
+    border-radius:15px;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#7c3aed;
+}
+
+/* LIGHT MODE BUTTON */
+
+.mode-btn{
+
+    position:absolute;
+
+    bottom:20px;
+
+    left:15px;
+
+    width:85%;
+
+    padding:16px;
+
+    border:none;
+
+    border-radius:18px;
+
+    background:linear-gradient(
+        135deg,
+        #7b2ff7,
+        #3f5efb
+    );
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    cursor:pointer;
+
+    transition:0.3s ease;
+
+    box-shadow:
+        0 0 15px rgba(123,47,247,0.5);
+}
+
+.mode-btn:hover{
+
+    transform:scale(1.05);
+
+    box-shadow:
+        0 0 25px rgba(123,47,247,0.8),
+        0 0 40px rgba(63,94,251,0.6);
+}
+
+/* LIGHT MODE */
+
+.light-mode{
+    background:#f4f4f4;
+    color:#111;
+}
+
+/* LIGHT SIDEBAR */
+
+.light-mode .sidebar{
+    background:rgba(255,255,255,0.7);
+}
+
+/* LIGHT CARDS */
+
+.light-mode .glass-box,
+.light-mode .job-card,
+.light-mode .stat-box{
+    background:white;
+    color:black;
+}
+
+/* LIGHT TEXT */
+
+.light-mode .hero p{
+    color:#555;
+}
+
+/* LIGHT NAV */
+
+.light-mode .nav-btn{
+    color:black;
+}
+
+.light-mode .nav-btn:hover,
+.light-mode .nav-btn.active{
+    color:white;
+}
+
+/* LIGHT INPUT */
+
+.light-mode input{
+    background:#f1f1f1;
+    color:black;
+    border:1px solid #ccc;
+}
+
+/* MOVE DARK MODE BUTTON LOWER */
+
+.mode-btn{
+    bottom:40px;
+}

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Find Jobs</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:
+    linear-gradient(135deg,#0f172a,#1e293b,#7c3aed);
+
+    min-height:100vh;
+
+    padding:40px;
+
+    color:white;
+}
+
+.title{
+
+    font-size:42px;
+
+    margin-bottom:30px;
+
+    font-weight:700;
+}
+
+.search-box{
+
+    display:flex;
+
+    gap:15px;
+
+    margin-bottom:40px;
+}
+
+.search-box input{
+
+    flex:1;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:15px;
+
+    font-size:16px;
+
+    outline:none;
+}
+
+.search-box button{
+
+    padding:18px 30px;
+
+    border:none;
+
+    border-radius:15px;
+
+    background:#7c3aed;
+
+    color:white;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.search-box button:hover{
+
+    background:#6d28d9;
+}
+
+.jobs-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(320px,1fr));
+
+    gap:25px;
+}
+
+.job-card{
+
+    background:rgba(255,255,255,0.1);
+
+    backdrop-filter:blur(12px);
+
+    padding:25px;
+
+    border-radius:25px;
+
+    border:1px solid rgba(255,255,255,0.2);
+
+    transition:0.3s;
+}
+
+.job-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 0 20px rgba(124,58,237,0.5);
+}
+
+.job-card h2{
+
+    margin-bottom:10px;
+}
+
+.company{
+
+    color:#cbd5e1;
+
+    margin-bottom:15px;
+}
+
+.skills{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-bottom:20px;
+}
+
+.skill{
+
+    background:#7c3aed;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    font-size:13px;
+}
+
+.bottom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+}
+
+.match{
+
+    background:#00c853;
+
+    padding:8px 15px;
+
+    border-radius:20px;
+
+    font-weight:600;
+}
+
+.apply-btn{
+
+    background:#7c3aed;
+
+    border:none;
+
+    padding:10px 20px;
+
+    border-radius:12px;
+
+    color:white;
+
+    cursor:pointer;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<h1 class="title">
+
+    Find Your Dream Jobs 🚀
+
+</h1>
+
+<div class="search-box">
+
+    <input type="text"
+    placeholder="Search skills, jobs, technologies...">
+
+    <button>
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        Search
+
+    </button>
+
+</div>
+
+<div class="jobs-grid">
+
+    <div class="job-card">
+
+        <h2>Python Developer</h2>
+
+        <p class="company">
+
+            Google • Remote
+
+        </p>
+
+        <div class="skills">
+
+            <div class="skill">Python</div>
+
+            <div class="skill">Flask</div>
+
+            <div class="skill">SQL</div>
+
+        </div>
+
+        <div class="bottom">
+
+            <div class="match">
+
+                92% Match
+
+            </div>
+
+            <button class="apply-btn">
+
+                Apply
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="job-card">
+
+        <h2>Machine Learning Engineer</h2>
+
+        <p class="company">
+
+            Microsoft • Hybrid
+
+        </p>
+
+        <div class="skills">
+
+            <div class="skill">ML</div>
+
+            <div class="skill">Python</div>
+
+            <div class="skill">TensorFlow</div>
+
+        </div>
+
+        <div class="bottom">
+
+            <div class="match">
+
+                88% Match
+
+            </div>
+
+            <button class="apply-btn">
+
+                Apply
+
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="job-card">
+
+        <h2>Data Analyst</h2>
+
+        <p class="company">
+
+            Amazon • Remote
+
+        </p>
+
+        <div class="skills">
+
+            <div class="skill">SQL</div>
+
+            <div class="skill">Power BI</div>
+
+            <div class="skill">Excel</div>
+
+        </div>
+
+        <div class="bottom">
+
+            <div class="match">
+
+                85% Match
+
+            </div>
+
+            <button class="apply-btn">
+
+                Apply
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

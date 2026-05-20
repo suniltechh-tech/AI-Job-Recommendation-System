@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>AI Job Recommendations</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="main-container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+        <div class="logo">
+            <i class="fa-solid fa-briefcase"></i>
+            Job AI
+        </div>
+        <div class="dark-toggle">
+
+        <button onclick="toggleDarkMode()" id="darkBtn">
+
+        🌙 Dark Mode
+
+        </button>
+
+        </div>
+        <ul>
+             <a href="/" class="nav-btn active">
+   <i class="fas fa-home"></i>
+   <span>Home</span>
+</a>
+
+<a href="/jobs" class="nav-btn">
+   <i class="fas fa-search"></i>
+   <span>Find Jobs</span>
+</a>
+
+<a href="/dashboard" class="nav-btn">
+   <i class="fas fa-chart-line"></i>
+   <span>Dashboard</span>
+</a>
+
+<a href="/profile" class="nav-btn">
+   <i class="fas fa-user"></i>
+   <span>Profile</span>
+</a>
+    </ul>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <!-- TITLE -->
+        <div class="hero">
+
+            <h1>
+                Your <span>Job Matches</span>
+            </h1>
+
+            <p>
+                Best AI-powered recommendations based on your skills
+            </p>
+
+        </div>
+
+        <!-- STATISTICS -->
+        <div class="stats">
+
+            <div class="stat-box">
+                <h2>{{ jobs|length }}</h2>
+                <p>Jobs Found</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>92%</h2>
+                <p>Top Match</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>18</h2>
+                <p>Skills Matched</p>
+            </div>
+
+            <div class="stat-box">
+                <h2>85%</h2>
+                <p>Resume Score</p>
+            </div>
+
+        </div>
+
+        <!-- JOB CARDS -->
+        <div class="jobs-container">
+
+            {% for job in jobs %}
+
+            <div class="job-card">
+
+                <h2>{{ job.title }}</h2>
+
+                <p>
+                    <i class="fa-solid fa-brain"></i>
+                    <b>Skills:</b><br>
+                    {{ job.skills }}
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-location-dot"></i>
+                    <b>Location:</b>
+                    {{ job.location }}
+                </p>
+
+                <p>
+                    <i class="fa-solid fa-sack-dollar"></i>
+                    <b>Salary:</b>
+                    {{ job.salary }}
+                </p>
+
+                <p class="match">
+                    🔥 {{ job.score }}% Match
+                </p>
+
+            </div>
+
+            {% endfor %}
+
+        </div>
+        <div class="chart-container">
+
+        <canvas id="jobChart"></canvas>
+
+        </div>
+
+        <!-- BACK BUTTON -->
+        <a href="/" class="back-btn">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+            Back To Home
+
+        </a>
+
+    </div>
+
+</div>
+<script>
+
+window.onload = function(){
+
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "dark"){
+
+        document.body.classList.add("light-mode");
+
+    }
+
+}
+
+</script>
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("light-mode");
+
+    let btn = document.getElementById("darkBtn");
+
+    if(document.body.classList.contains("light-mode")){
+
+        localStorage.setItem("theme","dark");
+
+        btn.innerHTML = "☀️ Light Mode";
+
+    }
+
+    else{
+
+        localStorage.setItem("theme","light");
+
+        btn.innerHTML = "🌙 Dark Mode";
+
+    }
+
+}
+
+/* KEEP MODE */
+
+window.onload = function(){
+
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "dark"){
+
+        document.body.classList.add("light-mode");
+
+        let btn = document.getElementById("darkBtn");
+
+        if(btn){
+
+            btn.innerHTML = "☀️ Light Mode";
+
+        }
+
+    }
+
+}
+
+</script>
+<script>
+
+const ctx = document.getElementById('jobChart');
+
+new Chart(ctx, {
+    type: 'bar',
+
+    data: {
+        labels: [
+            'Python Dev',
+            'Data Analyst',
+            'ML Engineer',
+            'Web Developer'
+        ],
+
+        datasets: [{
+            label: 'Match Percentage',
+
+            data: [92, 85, 78, 70],
+
+            borderWidth: 1
+        }]
+    },
+
+    options: {
+        responsive: true,
+
+        scales: {
+            y: {
+                beginAtZero: true,
+                max: 100
+            }
+        }
+    }
+});
+
+</script>
+</body>
+</html>

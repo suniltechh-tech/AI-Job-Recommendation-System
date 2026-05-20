@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>AI Job Recommendation</title>
+
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="main-container">
+!-- Sidebar -->
+<div class="sidebar">
+  <div class="logo">💼 Job AI</div>
+
+  <nav class="nav-links">
+
+    <a href="/" class="nav-btn active">
+      <i class="fas fa-home"></i>
+      <span>Home</span>
+    </a>
+    
+    
+    <a href="/jobs" class="nav-btn">
+      <i class="fas fa-search"></i>
+      <span>Find Jobs</span>
+    </a>
+
+    <a href="/dashboard" class="nav-btn">
+      <i class="fas fa-chart-line"></i>
+      <span>Dashboard</span>
+    </a>
+
+    <a href="/profile" class="nav-btn">
+      <i class="fas fa-user"></i>
+      <span>Profile</span>
+    </a>
+  </nav>
+
+  <button class="mode-btn">☀ Light Mode</button>
+</div>
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+body{
+  margin:0;
+  background:#050505;
+  font-family:Arial, sans-serif;
+}
+
+/* SIDEBAR */
+.sidebar{
+  width:260px;
+  height:100vh;
+  background:#0b0b0f;
+  padding:25px 18px;
+  box-shadow:0 0 25px rgba(0,0,0,0.5);
+}
+
+/* LOGO */
+.logo{
+  color:white;
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:40px;
+}
+
+/* NAVIGATION */
+.nav-links{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+/* BUTTON STYLE */
+.nav-btn{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  text-decoration:none;
+  color:#d1d1d1;
+  padding:16px 18px;
+  border-radius:16px;
+  font-size:18px;
+  font-weight:600;
+
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+
+  transition:0.35s ease;
+  position:relative;
+  overflow:hidden;
+}
+
+/* HOVER EFFECT */
+.nav-btn:hover{
+  transform:translateX(8px) scale(1.03);
+  color:white;
+
+  background:linear-gradient(
+    135deg,
+    #7b2ff7,
+    #4e54ff
+  );
+
+  box-shadow:
+    0 0 15px rgba(123,47,247,0.6),
+    0 0 30px rgba(78,84,255,0.4);
+}
+
+/* ACTIVE BUTTON */
+.nav-btn.active{
+  color:white;
+  background:linear-gradient(
+    135deg,
+    #7b2ff7,
+    #4e54ff
+  );
+
+  box-shadow:
+    0 0 20px rgba(123,47,247,0.7),
+    0 0 35px rgba(78,84,255,0.5);
+}
+
+/* ICON */
+.nav-btn i{
+  font-size:20px;
+}
+
+/* LIGHT MODE BUTTON */
+.mode-btn{
+  margin-top:40px;
+  width:100%;
+  padding:16px;
+  border:none;
+  border-radius:18px;
+
+  background:linear-gradient(
+    135deg,
+    #7b2ff7,
+    #3f5efb
+  );
+
+  color:white;
+  font-size:18px;
+  font-weight:700;
+  cursor:pointer;
+
+  transition:0.3s ease;
+
+  box-shadow:
+    0 0 15px rgba(123,47,247,0.5);
+}
+
+.mode-btn:hover{
+  transform:scale(1.05);
+  box-shadow:
+    0 0 25px rgba(123,47,247,0.8),
+    0 0 40px rgba(63,94,251,0.6);
+}
+</style>
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+</style>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+        <div class="hero">
+
+            <h1>
+                Find the Best Jobs <br>
+                Matched to <span>Your Skills</span>
+            </h1>
+
+            <p>
+                Upload your resume or enter your skills
+                and get personalized AI job recommendations.
+            </p>
+
+        </div>
+
+        <div class="glass-box">
+
+            <form method="POST">
+
+                <h2>Enter Your Skills</h2>
+
+                <input type="text"
+                name="skills"
+                placeholder="Python, Machine Learning, SQL">
+
+                <button type="submit">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    Find Best Jobs
+                </button>
+
+            </form>
+
+            <br><br>
+
+            <hr>
+
+            <br><br>
+
+            <form action="/upload"
+            method="POST"
+            enctype="multipart/form-data">
+
+                <h2>Upload Resume</h2>
+
+                <input type="file" name="resume">
+
+                <button type="submit">
+                    <i class="fa-solid fa-upload"></i>
+                    Upload Resume
+                </button>
+
+            </form>
+
+        </div>
+
+     </div>
+
+</div>
+
+<script>
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("light-mode");
+
+    let btn = document.getElementById("darkBtn");
+
+    if(document.body.classList.contains("light-mode")){
+
+        localStorage.setItem("theme","dark");
+
+        btn.innerHTML = "☀️ Light Mode";
+
+    }
+
+    else{
+
+        localStorage.setItem("theme","light");
+
+        btn.innerHTML = "🌙 Dark Mode";
+
+    }
+
+}
+
+/* KEEP MODE AFTER PAGE CHANGE */
+
+window.onload = function(){
+
+    let theme = localStorage.getItem("theme");
+
+    if(theme === "dark"){
+
+        document.body.classList.add("light-mode");
+
+        let btn = document.getElementById("darkBtn");
+
+        if(btn){
+
+            btn.innerHTML = "☀️ Light Mode";
+
+        }
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
