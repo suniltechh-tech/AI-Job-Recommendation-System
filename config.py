@@ -1,4 +1,6 @@
-MYSQL_HOST = "localhost"
+MYSQL_HOST = "tokaido.proxy.rlwy.net"
 MYSQL_USER = "root"
-MYSQL_PASSWORD = "Mohitkumar.3380"
-MYSQL_DB = "job_ai"
+MYSQL_PASSWORD = "NbAdObTJBmNuEPBFCEkTijlKnaCvtZda"
+MYSQL_DB = "railway"
+MYSQL_PORT = 19378
+
