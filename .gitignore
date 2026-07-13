@@ -3,3 +3,8 @@ __pycache__/
 static/uploads/
 .env
 .vscode/
+<<<<<<< HEAD
+.vscode/
+=======
+.vscode/
+>>>>>>> bc2fe1d19de72c7fbfc7202c8993af847d13d0f2
