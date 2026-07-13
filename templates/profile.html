@@ -1,229 +1,116 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
+{% block title %}
+My Profile
+{% endblock %}
 
-    <meta charset="UTF-8">
+{% block content %}
 
-    <meta name="viewport"
-    content="width=device-width, initial-scale=1.0">
-
-    <title>Profile</title>
-
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-    rel="stylesheet">
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Poppins',sans-serif;
-}
-
-body{
-
-    background:
-    linear-gradient(135deg,#0f172a,#1e293b,#7c3aed);
-
-    min-height:100vh;
-
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
-
-.profile-container{
-
-    width:420px;
-
-    background:rgba(255,255,255,0.1);
-
-    backdrop-filter:blur(15px);
-
-    border:1px solid rgba(255,255,255,0.2);
-
-    border-radius:25px;
-
-    padding:40px;
-
-    text-align:center;
-
-    color:white;
-
-    box-shadow:0 0 30px rgba(0,0,0,0.3);
-}
-
-.profile-img{
-
-    width:130px;
-
-    height:130px;
-
-    border-radius:50%;
-
-    border:4px solid white;
-
-    object-fit:cover;
-
-    margin-bottom:20px;
-}
-
-h1{
-
-    font-size:32px;
-
-    margin-bottom:10px;
-}
-
-.role{
-
-    color:#cbd5e1;
-
-    margin-bottom:30px;
-}
-
-.info-box{
-
-    background:rgba(255,255,255,0.08);
-
-    padding:15px;
-
-    border-radius:15px;
-
-    margin-bottom:15px;
-
-    text-align:left;
-}
-
-.info-box i{
-
-    margin-right:10px;
-
-    color:#a855f7;
-}
-
-.skills{
-
-    display:flex;
-
-    flex-wrap:wrap;
-
-    gap:10px;
-
-    margin-top:10px;
-}
-
-.skill{
-
-    background:#7c3aed;
-
-    padding:8px 14px;
-
-    border-radius:20px;
-
-    font-size:14px;
-}
-
-.edit-btn{
-
-    margin-top:25px;
-
-    width:100%;
-
-    padding:14px;
-
-    border:none;
-
-    border-radius:15px;
-
-    background:#7c3aed;
-
-    color:white;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:0.3s;
-}
-
-.edit-btn:hover{
-
-    background:#6d28d9;
-
-    transform:scale(1.03);
-}
-
-</style>
-
-</head>
-
-<body>
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/profile.css') }}">
 
 <div class="profile-container">
 
-    <img src="/static/images/sunil.jpeg"
-    class="profile-img">
+    <!-- LEFT PANEL -->
+    <div class="profile-card">
 
-    <h1>Sunil Kumar</h1>
+        <h2>👤 My Profile</h2>
 
-    <p class="role">
-        AI & Machine Learning Developer
-    </p>
+        <div class="profile-photo">
 
-    <div class="info-box">
-        <i class="fa-solid fa-envelope"></i>
-        sunil@gmail.com
-    </div>
+            {% if user.profile_image %}
+                <img src="{{ url_for('static', filename='uploads/' + user.profile_image) }}">
+            {% else %}
+                <img src="{{ url_for('static', filename='images/default-user.png') }}">
+            {% endif %}
 
-    <div class="info-box">
-        <i class="fa-solid fa-user-graduate"></i>
-        Computer Science Engineering
-    </div>
+        </div>
 
-    <div class="info-box">
-        <i class="fa-solid fa-location-dot"></i>
-        India
-    </div>
+        <h3>{{ user.full_name }}</h3>
 
-    <div class="info-box">
+        <p>AI & Machine Learning Engineer</p>
 
-        <i class="fa-solid fa-code"></i>
+        <p>📍 Punjab, India</p>
 
-        Skills
+        <input type="file" name="profile_image">
 
-        <div class="skills">
+        <div class="progress-box">
 
-            <div class="skill">Python</div>
+            <h4>Profile Completion</h4>
 
-            <div class="skill">Machine Learning</div>
+            <div class="progress-bar">
+                <div class="progress"></div>
+            </div>
 
-            <div class="skill">Flask</div>
+            <span>80%</span>
 
-            <div class="skill">HTML</div>
+        </div>
 
-            <div class="skill">CSS</div>
+        <div class="stats">
+
 
         </div>
 
     </div>
 
-    <button class="edit-btn">
+    <!-- RIGHT PANEL -->
 
-        <i class="fa-solid fa-pen"></i>
+    <form action="/update_profile"
+      method="POST"
+      enctype="multipart/form-data">
 
-        Edit Profile
+    <div class="form-grid">
 
+        <div class="form-group">
+            <label>Full Name</label>
+            <input type="text"
+                   name="full_name"
+                   value="{{ user.full_name }}">
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email"
+                   value="{{ user.email }}"
+                   readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Phone</label>
+            <input type="text"
+                   name="phone"
+                   value="{{ user.phone }}">
+        </div>
+
+        <div class="form-group">
+            <label>Education</label>
+            <input type="text"
+                   name="education"
+                   value="{{ user.education }}">
+        </div>
+
+        <div class="form-group full-width">
+            <label>Skills</label>
+            <textarea
+                name="skills"
+                rows="2">{{ user.skills }}</textarea>
+        </div>
+
+        <div class="form-group full-width">
+            <label>About Me</label>
+            <textarea
+                name="about"
+                rows="3">{{ user.about }}</textarea>
+        </div>
+
+    </div>
+
+    <button class="save-btn">
+        💾 Save Profile
     </button>
+
+</form>
 
 </div>
 
-</body>
-</html>
+{% endblock %}

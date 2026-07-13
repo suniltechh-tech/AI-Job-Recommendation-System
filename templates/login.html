@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | JobAI Pro</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="left-panel">
+
+        <div class="logo">
+            <i class="fa-solid fa-briefcase"></i>
+            <span>JobAI Pro</span>
+        </div>
+
+        <h1>Welcome Back!</h1>
+
+        <p>
+            Login to continue your AI-powered job search and manage your profile.
+        </p>
+
+    </div>
+
+    <div class="right-panel">
+
+        <div class="register-card">
+
+            <h2>Login</h2>
+
+            <form action="/login" method="POST">
+
+                <div class="input-box">
+                    <i class="fa-solid fa-envelope"></i>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email"
+                        required>
+                </div>
+
+                <div class="input-box">
+                    <i class="fa-solid fa-lock"></i>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="Password"
+                        required>
+                </div>
+
+                <button class="btn">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="login-link">
+                Don't have an account?
+                <a href="/register">Register</a>
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
